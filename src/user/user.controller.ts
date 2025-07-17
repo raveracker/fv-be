@@ -15,19 +15,15 @@ import { AuthGuard } from '@nestjs/passport';
 import { UserService } from './user.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
-import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { UserDto } from './dto/user.dto';
 import { VoidResponse } from 'src/auth/dto/void-response.dto';
 import { VerifyEmailDto } from './dto/verify-email.dto';
 
 @Controller('users')
-@ApiTags('User Managed Routes')
-@ApiBearerAuth()
 export class UserController {
   constructor(private readonly users: UserService) {}
 
   @Get(':id')
-  @ApiOkResponse({ type: UserDto })
   getUserById(@Param('id') id: string): Promise<UserDto> {
     return this.users.getUserById(id);
   }

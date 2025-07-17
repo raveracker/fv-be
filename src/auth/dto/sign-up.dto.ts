@@ -1,4 +1,3 @@
-import { ApiProperty } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import {
   IsEmail,
@@ -10,12 +9,6 @@ import {
 } from 'class-validator';
 
 export class SignUpDto {
-  @ApiProperty({
-    description: 'The name of the user',
-    example: 'John Doe',
-    maxLength: 255,
-    minLength: 3,
-  })
   @IsNotEmpty()
   @IsString()
   @MaxLength(255)
@@ -25,22 +18,12 @@ export class SignUpDto {
   })
   readonly name: string;
 
-  @ApiProperty({
-    description: 'The email of the user',
-    example: 'user@email.com',
-  })
   @IsString()
   @IsEmail({}, { message: 'Please enter correct email' })
   @IsNotEmpty()
   @Transform(({ value }) => value.toLowerCase().trim())
   readonly email: string;
 
-  @ApiProperty({
-    description: 'The password of the user',
-    example: 'password123',
-    minLength: 8,
-    maxLength: 50,
-  })
   @IsString()
   @IsNotEmpty()
   @MinLength(8)
