@@ -32,11 +32,5 @@ import { createKeyv } from '@keyv/redis';
     UserModule,
     WebsiteModule,
   ],
-  providers: [
-    {
-      provide: APP_GUARD,
-      useClass: JwtGlobalAuthGuard,
-    },
-  ],
 })
 export class AppModule {}
