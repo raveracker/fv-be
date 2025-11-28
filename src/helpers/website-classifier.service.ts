@@ -104,7 +104,7 @@ export class WebsiteClassifierService {
       return { title, h1, metaDescription, products, organization };
     } catch (err) {
       this.logger.error('Error parsing website:', err.message);
-      return null;
+      return { title: "NA", h1: "NA", metaDescription: "NA", products: [], organization: [] };
     }
   }
 
